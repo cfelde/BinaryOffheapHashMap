@@ -10,3 +10,5 @@ The B in BOHMap stands for binary; All keys and values must be in binary form. I
 By default the OHMap will use standard Java serialization via ObjectOutputStream and ObjectInputStream, but this can be substituted by any serialization framework of your choice.
 
 A set of tests are also included, but if they’ve missed any use cases and you find a bug, please let me know, thanks.
+
+I've put together a short blog post with some performance numbers: http://blog.cfelde.com/2014/04/only-the-good-die-young-or-move-off-heap/
