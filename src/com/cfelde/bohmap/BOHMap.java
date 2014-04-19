@@ -145,7 +145,7 @@ public class BOHMap implements Map<Binary, Binary> {
         if (!(key instanceof Binary))
             return false;
         
-        Binary bKey = (Binary) key;
+        final Binary bKey = (Binary) key;
         final byte[] keyData = bKey.getValue();
         final int keySize = keyData.length;
         
@@ -202,7 +202,7 @@ public class BOHMap implements Map<Binary, Binary> {
         if (value != null && !(value instanceof Binary))
             return false;
         
-        Binary bValue = (Binary) value;
+        final Binary bValue = (Binary) value;
         final byte[] valueData = bValue == null ? null : bValue.getValue();
         final int valueSize = valueData == null ? -1 : valueData.length;
         
@@ -269,7 +269,7 @@ public class BOHMap implements Map<Binary, Binary> {
         if (!(key instanceof Binary))
             return null;
         
-        Binary bKey = (Binary) key;
+        final Binary bKey = (Binary) key;
         final byte[] keyData = bKey.getValue();
         final int keySize = keyData.length;
         
@@ -485,7 +485,7 @@ public class BOHMap implements Map<Binary, Binary> {
         if (!(key instanceof Binary))
             return null;
         
-        Binary bKey = (Binary) key;
+        final Binary bKey = (Binary) key;
         final byte[] keyData = bKey.getValue();
         final int keySize = keyData.length;
         
