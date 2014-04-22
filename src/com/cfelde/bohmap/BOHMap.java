@@ -222,7 +222,7 @@ public class BOHMap implements Map<Binary, Binary> {
             locationAddress += Integer.BYTES;
             
             // Move pointer past key address in key/value pair
-            locationAddress += Long.BYTES;
+            locationAddress += addressSize;
 
             for (long locationOffset = 0; locationOffset < entryCount; locationOffset++) {
                 // Address of value within partition
