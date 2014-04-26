@@ -783,11 +783,15 @@ public class BOHMap implements Map<Binary, Binary> {
 
         @Override
         public boolean hasNext() {
-            long locationAddress = map.unsafe.getAddress(map.partitionAddress + (offset * map.addressSize));
-            
-            if (locationAddress == 0) {
-                offset++;
-                return hasNext();
+            while (offset < map.partitionCount) {
+                long locationAddress = map.unsafe.getAddress(map.partitionAddress + (offset * map.addressSize));
+
+                if (locationAddress == 0) {
+                    offset++;
+                    continue;
+                }
+                
+                break;
             }
             
             return offset < map.partitionCount;
@@ -800,9 +804,13 @@ public class BOHMap implements Map<Binary, Binary> {
             
             long locationAddress = map.unsafe.getAddress(map.partitionAddress + (offset * map.addressSize));
 
-            if (locationAddress == 0) {
+            while (locationAddress == 0) {
                 offset++;
-                return next();
+                
+                if (offset >= map.partitionCount)
+                    throw new NoSuchElementException();
+                
+                locationAddress = map.unsafe.getAddress(map.partitionAddress + (offset * map.addressSize));
             }
 
             // Read how many entries we expect in this partition
@@ -942,11 +950,15 @@ public class BOHMap implements Map<Binary, Binary> {
 
         @Override
         public boolean hasNext() {
-            long locationAddress = map.unsafe.getAddress(map.partitionAddress + (offset * map.addressSize));
-            
-            if (locationAddress == 0) {
-                offset++;
-                return hasNext();
+            while (offset < map.partitionCount) {
+                long locationAddress = map.unsafe.getAddress(map.partitionAddress + (offset * map.addressSize));
+
+                if (locationAddress == 0) {
+                    offset++;
+                    continue;
+                }
+                
+                break;
             }
             
             return offset < map.partitionCount;
@@ -959,9 +971,13 @@ public class BOHMap implements Map<Binary, Binary> {
             
             long locationAddress = map.unsafe.getAddress(map.partitionAddress + (offset * map.addressSize));
 
-            if (locationAddress == 0) {
+            while (locationAddress == 0) {
                 offset++;
-                return next();
+                
+                if (offset >= map.partitionCount)
+                    throw new NoSuchElementException();
+                
+                locationAddress = map.unsafe.getAddress(map.partitionAddress + (offset * map.addressSize));
             }
 
             // Read how many entries we expect in this partition
@@ -1120,11 +1136,15 @@ public class BOHMap implements Map<Binary, Binary> {
 
         @Override
         public boolean hasNext() {
-            long locationAddress = map.unsafe.getAddress(map.partitionAddress + (offset * map.addressSize));
-            
-            if (locationAddress == 0) {
-                offset++;
-                return hasNext();
+            while (offset < map.partitionCount) {
+                long locationAddress = map.unsafe.getAddress(map.partitionAddress + (offset * map.addressSize));
+
+                if (locationAddress == 0) {
+                    offset++;
+                    continue;
+                }
+                
+                break;
             }
             
             return offset < map.partitionCount;
@@ -1137,9 +1157,13 @@ public class BOHMap implements Map<Binary, Binary> {
             
             long locationAddress = map.unsafe.getAddress(map.partitionAddress + (offset * map.addressSize));
 
-            if (locationAddress == 0) {
+            while (locationAddress == 0) {
                 offset++;
-                return next();
+                
+                if (offset >= map.partitionCount)
+                    throw new NoSuchElementException();
+                
+                locationAddress = map.unsafe.getAddress(map.partitionAddress + (offset * map.addressSize));
             }
 
             // Read how many entries we expect in this partition
