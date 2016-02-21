@@ -759,7 +759,7 @@ public class BOHMap implements Map<Binary, Binary> {
                 if (!(k instanceof Binary))
                     continue;
                 
-                changed = map.containsKey((Binary)k) || changed;
+                changed = changed || map.containsKey((Binary)k);
                 map.remove((Binary)k);
             }
             
