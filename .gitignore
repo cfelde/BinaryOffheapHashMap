@@ -6,4 +6,7 @@
 *.ear
 
 .DS_Store
-
+hs_err_*.log
+.idea
+.gradle
+/build
