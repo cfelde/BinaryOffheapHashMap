@@ -290,5 +290,20 @@ public class TestOHMap {
 
         assertFalse(iterator.hasNext());
         assertTrue(ohMap.isEmpty());
+
+        ohMap.put(key, value);
+
+        iterator = ohMap.values().iterator();
+
+        assertTrue(iterator.hasNext());
+        assertEquals(value, iterator.next());
+        assertFalse(ohMap.isEmpty());
+
+        ohMap.remove(key);
+
+        iterator = ohMap.values().iterator();
+
+        assertFalse(iterator.hasNext());
+        assertTrue(ohMap.isEmpty());
     }
 }

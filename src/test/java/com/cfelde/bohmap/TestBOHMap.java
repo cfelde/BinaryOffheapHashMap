@@ -685,5 +685,20 @@ public class TestBOHMap {
 
         assertFalse(iterator.hasNext());
         assertTrue(map.isEmpty());
+
+        map.put(new Binary(key), new Binary(value));
+
+        iterator = map.values().iterator();
+
+        assertTrue(iterator.hasNext());
+        assertEquals(new Binary(value), iterator.next());
+        assertFalse(map.isEmpty());
+
+        map.remove(new Binary(key));
+
+        iterator = map.values().iterator();
+
+        assertFalse(iterator.hasNext());
+        assertTrue(map.isEmpty());
     }
 }
